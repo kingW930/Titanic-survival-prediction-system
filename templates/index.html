@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Predict Titanic passenger survival using machine learning">
+    <title>Titanic Survival Prediction System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+    </div>
+    
+    <div class="container">
+        <header class="header">
+            <div class="ship-icon">🚢</div>
+            <h1>Titanic Survival Prediction</h1>
+            <p class="subtitle">Using Random Forest Machine Learning Algorithm</p>
+        </header>
+
+        {% if result %}
+        <div class="result-card {{ 'survived' if result.survived else 'not-survived' }}">
+            <div class="result-icon">
+                {% if result.survived %}
+                    <span class="icon-survived">✓</span>
+                {% else %}
+                    <span class="icon-not-survived">✗</span>
+                {% endif %}
+            </div>
+            <h2 class="result-message">{{ result.message }}</h2>
+            <p class="confidence">Confidence: {{ result.confidence }}</p>
+            <div class="result-details">
+                <div class="detail-item">
+                    <span class="detail-label">Class</span>
+                    <span class="detail-value">{{ result.input.pclass }}{{ 'st' if result.input.pclass == 1 else ('nd' if result.input.pclass == 2 else 'rd') }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Sex</span>
+                    <span class="detail-value">{{ result.input.sex }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Age</span>
+                    <span class="detail-value">{{ result.input.age }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Siblings/Spouse</span>
+                    <span class="detail-value">{{ result.input.sibsp }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Fare</span>
+                    <span class="detail-value">£{{ result.input.fare }}</span>
+                </div>
+            </div>
+            <a href="/" class="btn-new-prediction">Make New Prediction</a>
+        </div>
+        {% elif error %}
+        <div class="error-card">
+            <div class="error-icon">⚠️</div>
+            <p>{{ error.message }}</p>
+            <a href="/" class="btn-new-prediction">Try Again</a>
+        </div>
+        {% else %}
+        <form class="prediction-form" action="/predict" method="POST">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="pclass">
+                        <span class="label-icon">🎫</span>
+                        Passenger Class
+                    </label>
+                    <select name="pclass" id="pclass" required>
+                        <option value="">Select class...</option>
+                        <option value="1">1st Class (Upper)</option>
+                        <option value="2">2nd Class (Middle)</option>
+                        <option value="3">3rd Class (Lower)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="sex">
+                        <span class="label-icon">👤</span>
+                        Sex
+                    </label>
+                    <select name="sex" id="sex" required>
+                        <option value="">Select sex...</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">
+                        <span class="label-icon">🎂</span>
+                        Age
+                    </label>
+                    <input type="number" name="age" id="age" min="0" max="100" step="0.5" placeholder="Enter age" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="sibsp">
+                        <span class="label-icon">👨‍👩‍👧‍👦</span>
+                        Siblings / Spouses Aboard
+                    </label>
+                    <input type="number" name="sibsp" id="sibsp" min="0" max="10" placeholder="Number of siblings/spouses" required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="fare">
+                        <span class="label-icon">💷</span>
+                        Ticket Fare (in £)
+                    </label>
+                    <input type="number" name="fare" id="fare" min="0" max="600" step="0.01" placeholder="Enter fare amount" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-predict">
+                <span class="btn-text">Predict Survival</span>
+                <span class="btn-icon">→</span>
+            </button>
+        </form>
+        {% endif %}
+
+        <footer class="footer">
+            <p>Model: Random Forest Classifier | Persistence: Joblib</p>
+            <p class="tech-stack">Flask • Scikit-learn • Python</p>
+        </footer>
+    </div>
+</body>
+</html>

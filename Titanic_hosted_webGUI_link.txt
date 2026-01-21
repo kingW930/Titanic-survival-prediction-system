@@ -1,0 +1,23 @@
+==================================================
+TITANIC SURVIVAL PREDICTION SYSTEM - SUBMISSION
+==================================================
+
+Name: [Your Full Name]
+Matric Number: [Your Matric Number]
+
+Machine Learning Algorithm Used: Random Forest Classifier
+Model Persistence Method: Joblib
+
+Live URL of Hosted Application: [Add your deployed URL here]
+GitHub Repository Link: [Add your GitHub repo URL here]
+
+==================================================
+Features Used (5 Input Features):
+1. Pclass - Passenger Class (1st, 2nd, 3rd)
+2. Sex - Gender (Male/Female)
+3. Age - Age in years
+4. SibSp - Number of siblings/spouses aboard
+5. Fare - Ticket fare amount
+
+Target Variable: Survived (0 = No, 1 = Yes)
+==================================================
