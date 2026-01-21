@@ -2,13 +2,13 @@
 TITANIC SURVIVAL PREDICTION SYSTEM - SUBMISSION
 ==================================================
 
-Name: [Your Full Name]
-Matric Number: [Your Matric Number]
+Name: Wesley Osalumense Iluobe
+Matric Number: 23CH034193
 
 Machine Learning Algorithm Used: Random Forest Classifier
 Model Persistence Method: Joblib
 
-Live URL of Hosted Application: [Add your deployed URL here]
+Live URL of Hosted Application: https://titanic-survival-prediction-system-0mwb.onrender.com/
 GitHub Repository Link: https://github.com/kingW930/Titanic-survival-prediction-system
 
 ==================================================
