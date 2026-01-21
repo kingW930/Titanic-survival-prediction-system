@@ -9,7 +9,7 @@ Machine Learning Algorithm Used: Random Forest Classifier
 Model Persistence Method: Joblib
 
 Live URL of Hosted Application: [Add your deployed URL here]
-GitHub Repository Link: [Add your GitHub repo URL here]
+GitHub Repository Link: https://github.com/kingW930/Titanic-survival-prediction-system
 
 ==================================================
 Features Used (5 Input Features):

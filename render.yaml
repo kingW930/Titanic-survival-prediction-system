@@ -1,0 +1,7 @@
+# Render.com deployment configuration
+services:
+  - type: web
+    name: titanic-survival-prediction
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
